@@ -19,6 +19,7 @@ public class Init : MonoBehaviour
         RESTAdapter gatewayPort = new RESTAdapter("https://odysseyanalytics.ir/api/");
         ILogger logger = new DefaultLogger();
         RabbitMQAdapter rabbitMqAdapter = new RabbitMQAdapter();
+        SQLitePCL.Batteries_V2.Init();
         SqliteAdapter sqliteAdapter = new SqliteAdapter(Path.Combine(Application.persistentDataPath,"events.db"));
         session = new SessionHandler(gatewayPort,rabbitMqAdapter,rabbitMqAdapter,logger,sqliteAdapter,token);
         await session.InitializeSessionAsync();
